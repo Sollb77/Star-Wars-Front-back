@@ -4,16 +4,9 @@ import "../../styles/home.css";
 
 export const Home = () => {
 	const {store, actions} = useContext(Context);
-	const [email, setEmail] = useContext("");
-	const [password, setPassword] = useContext("");
+	const [email, setEmail] = useState(" ");
+	const [password, setPassword] = useState("");
 
-/*	const handleEmail = (e) => {
-		setEmail(e.target.value);
-	};
-
-	const handlePassword = (e) => {
-		setPassword(e.target.value);
-	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -21,30 +14,32 @@ export const Home = () => {
 		{console.log("Complete la informacion solicitada")
 		}
 		else 
-		{actions.fetchsCredentials(email,password)
+		{actions.fetchCredentials(email,password)
 		}
 
 		}
 	//const {store,actions} = useContext(Context)
-*/
+
 	return (
+		<>
 		<div className="text-center mt-5">
 			<form>
-				<div class="mb-3">
-					<label for="exampleInputEmail1" class="form-label">Email address</label>
-					<input type="email" class="form-control" id="exampleInputEmail1"  value={email} aria-describedby="emailHelp"/>
-					<div id="emailHelp" class="form-text w-25">We'll never share your email with anyone else.</div>
+				<div className="mb-3">
+					<label for="exampleInputEmail1" className="form-label">Email address</label>
+					<input type="email" className="form-control" id="exampleInputEmail1"  onChange={(e)=>setEmail(e.target.value)} value={email} aria-describedby="emailHelp"/>
+					<div id="emailHelp" className="form-text w-25">We'll never share your email with anyone else.</div>
 				</div>
-				<div class="mb-3">
-					<label for="exampleInputPassword1" class="form-label">Password</label>
-					<input type="password" class="form-control" id="exampleInputPassword1"  value={password} />
+				<div className="mb-3">
+					<label for="exampleInputPassword1" className="form-label">Password</label>
+					<input type="password" className="form-control" id="exampleInputPassword1" onChange={(e)=>setPassword(e.target.value)} value={password} />
 				</div>
-				<div class="mb-3 form-check">
-					<input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-					<label class="form-check-label" for="exampleCheck1">Check me out</label>
+				<div className="mb-3 form-check">
+					<input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+					<label className="form-check-label" for="exampleCheck1" >Check me out</label>
 				</div>
-				<button type="submit" class="btn btn-primary" >Submit</button>
+				<button type="submit" className="btn btn-primary" onClick={handleSubmit} >Submit</button>
 			</form>
 		</div>
+		</>
 	);
 }

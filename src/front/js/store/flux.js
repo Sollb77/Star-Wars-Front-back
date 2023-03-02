@@ -46,7 +46,7 @@ const getState = ({
             }
         },
 
-        /*  getMessage: async () => {
+        getMessage: async () => {
             try {
                 // fetching data from the backend
                 const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
@@ -75,7 +75,7 @@ const getState = ({
             setStore({
                 demo: demo
             });
-    }*/
+        }
     }
 };
 
