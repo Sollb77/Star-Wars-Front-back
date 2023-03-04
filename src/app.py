@@ -106,6 +106,32 @@ def protected():
 
 
 
+@app.route('/admin/user', methods=['GET'])
+def handle_hello():
+    user = User.query.all()
+    list_user = list(map(lambda usuario : usuario.serialize(), user))
+    print(list_user)
+    response_body = {
+        "msg": "Hello, this is your GET /user response ",
+        "list_user":list_user
+    }
+
+    return jsonify(response_body), 200
+
+#[GET]/user
+
+@app.route('/admin/user/<int:user_id>',methods=['GET'])
+def get_usuario(user_id):
+    usuario = User.query.filter_by(id=user_id).first()
+ #   print(usuario.serialize())
+    if usuario is None: 
+        response_body = {"msg": "No hay Usuario"}
+        return response_body, 404
+    return jsonify(usuario.serialize()), 200
+
+#[GET]/user/favorites
+
+
 
 
 # this only runs if `$ python src/main.py` is executed

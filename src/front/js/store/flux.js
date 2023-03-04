@@ -16,32 +16,36 @@ const getState = ({
                     background: "white",
                     initial: "white"
                 }
-            ]
+            ],
+            login:{}
+
         },
         actions: {
             // Use getActions to call a function within a fuction
-            fetchCredentials: (email, password) => {
-                fetch("https: //3001-4geeksacade-reactflaskh-gwxcpsm8kdq.ws-us89.gitpod.io/login", {
+            fetchCredentials: async(email, password) => {
+                const resp = await fetch("https://3001-sollb77-login-gx5dc8qjwbi.ws-us89.gitpod.io/login", {
                         method: "POST",
                         headers: {
-                            "content-type": "application/json",
+                            "Content-Type": "application/json",
                         },
                         body: JSON.stringify({
                             email: email,
                             password: password,
                         })
-
-
                     })
-                    .then(res => res.json())
-                    .then(data => {
-                        localStorage.setItem("token", data.acces_token)
+                    if (resp.status === 200)
+                     
+                    {
+                        const data = await resp.json()
+                        localStorage.setItem("token", data?.access_token)
                         setStore({
                             login: true,
                         })
                         console.log(getStore());
-                    })
-                    .catch(error => console.log(error))
+                        return true
+
+                    }
+                   return false
 
             }
         },
