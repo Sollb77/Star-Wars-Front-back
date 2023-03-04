@@ -17,36 +17,159 @@ const getState = ({
                     initial: "white"
                 }
             ],
-            login:{}
+            personajes: [],
+            personaje: {},
+            planets: [],
+            planet: {},
+            favoritos: [],
+            auth: false,
+            profile: {},
+            login: {}
 
         },
         actions: {
             // Use getActions to call a function within a fuction
-            fetchCredentials: async(email, password) => {
+            fetchCredentials: async (email, password) => {
                 const resp = await fetch("https://3001-sollb77-login-gx5dc8qjwbi.ws-us89.gitpod.io/login", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            password: password,
-                        })
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
                     })
-                    if (resp.status === 200)
-                     
-                    {
-                        const data = await resp.json()
-                        localStorage.setItem("token", data?.access_token)
-                        setStore({
-                            login: true,
-                        })
-                        console.log(getStore());
-                        return true
+                })
+                if (resp.status === 200)
 
+                {
+                    const data = await resp.json()
+                    localStorage.setItem("token", data ? .access_token)
+                    setStore({
+                        login: true,
+                    })
+                    console.log(getStore());
+                    return true
+
+                }
+                return false
+
+            }
+        },
+
+        // All Characters
+        obtenerCharacters: async () => {
+            try {
+                const response = await fetch("https://swapi.dev/api/people")
+                const data = await response.json()
+                setStore({
+                    personajes: data.results
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        // 1 Character
+        obtener1Character: async (id) => {
+            try {
+                const response = await fetch("https://swapi.dev/api/people/" + id)
+                const data = await response.json()
+                //console.log(data)
+                setStore({
+                    personaje: data
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        // Todos los planets
+        obtenerPlanets: async () => {
+            try {
+                const response = await fetch("https://swapi.dev/api/planets/")
+                const data = await response.json()
+                //console.log(data.results)
+                setStore({
+                    planets: data.results
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        //1 Planet
+        obtener1Planet: async (id) => {
+            try {
+                const response = await fetch("https://swapi.dev/api/planets/" + id)
+                const data = await response.json()
+                //console.log(data.results)
+                setStore({
+                    planet: data
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        // Favoritos
+        favorites: (item) => {
+            const store = getStore();
+            if (store.favoritos.includes(item)) {
+                // Si esta incluido, que lo borre
+                const actions = getActions()
+                actions.removeFavorito(item)
+            } else {
+                setStore({
+                    favoritos: [...store.favoritos, item]
+                })
+                //console.log(store.favoritos)
+            }
+
+        },
+
+        // Borra favorito
+        removeFavorito: (item) => {
+            const store = getStore();
+            //console.log(item)
+            let sinEliminar = []
+            //setStore(store.favoritos.filter((elem) => elem !== item))
+            //console.log(store.favoritos)
+            sinEliminar = store.favoritos.filter((elem) => elem !== item)
+            //console.log(sinEliminar)
+            setStore({
+                favoritos: sinEliminar
+            })
+            //console.log(store.favoritos)
+        },
+
+        //Registrarse
+        registro: async (name, lastname, username, email, password) => {
+            try {
+                const response = await fetch('https://3000', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name: name,
+                        lastname: lastname,
+                        username: username,
+                        email: email,
+                        password: password
+                    }),
+                    headers: {
+                        "Content-type": "application/json"
                     }
-                   return false
-
+                })
+                if (response.status === 200) {
+                    const data = await response.json()
+                    localStorage.setItem('token', data.access_token)
+                    //console.log(data)
+                    setStore({
+                        auth: true
+                    })
+                    return true;
+                }
+            } catch (error) {
+                console.log(error)
             }
         },
 
