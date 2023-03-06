@@ -1,3 +1,5 @@
+//import {Characters} from "./component/characters.jsx";
+
 const getState = ({
     getStore,
     getActions,
@@ -23,14 +25,14 @@ const getState = ({
             planet: {},
             favoritos: [],
             auth: false,
-            profile: {},
-            login: {}
-
+            registro: {},
+            login: {},
+            Characters: {},
         },
         actions: {
             // Use getActions to call a function within a fuction
             fetchCredentials: async (email, password) => {
-                const resp = await fetch("https://3001-sollb77-login-gx5dc8qjwbi.ws-us89.gitpod.io/login", {
+                const resp = await fetch("https://3000-sollb77-starwarsfrontba-gluni3ojww7.ws-us89.gitpod.io/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -44,7 +46,7 @@ const getState = ({
 
                 {
                     const data = await resp.json()
-                    localStorage.setItem("token", data ? .access_token)
+                    // localStorage.setItem("token", data ? .access_token)
                     setStore({
                         login: true,
                     })
@@ -146,7 +148,7 @@ const getState = ({
         //Registrarse
         registro: async (name, lastname, username, email, password) => {
             try {
-                const response = await fetch('https://3000', {
+                const response = await fetch('https://3000-sollb77-starwarsfrontba-gluni3ojww7.ws-us89.gitpod.io/principal', {
                     method: 'POST',
                     body: JSON.stringify({
                         name: name,
