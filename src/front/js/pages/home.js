@@ -14,7 +14,7 @@ export const Home = () => {
       console.log("Complete la Formacion solicitada");
     } else {
       const ver = await actions.fetchCredentials(email, password);
-      ver ? Navigate("/demo") : null;
+      ver ? Navigate("/principal") : null;
       //	if (store.login === true)
       //	   {<Link to="/demo"/> }
       console.log(ver);

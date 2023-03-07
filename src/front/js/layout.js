@@ -10,7 +10,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { FavoritesProvider } from "./context/favoriteProvider.jsx";
-import { Principal } from "./pages/principal";
+import { Principal } from "./pages/Principal";
 
 
 //create your first component

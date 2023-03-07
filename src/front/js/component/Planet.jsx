@@ -10,7 +10,7 @@ import { FavoritesContext } from "../context/favoriteContext.jsx";
 
 
 
-export const Planetas = () => {
+export const Planet = () => {
 
 const { addFavorites, favorites } = useContext(FavoritesContext);	  
 

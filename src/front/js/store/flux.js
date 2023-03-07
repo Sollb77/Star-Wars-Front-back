@@ -11,13 +11,13 @@ const getState = ({
             demo: [{
                     title: "FIRST",
                     background: "white",
-                    initial: "white"
+                    initial: "white",
                 },
                 {
                     title: "SECOND",
                     background: "white",
-                    initial: "white"
-                }
+                    initial: "white",
+                },
             ],
             personajes: [],
             personaje: {},
@@ -32,85 +32,83 @@ const getState = ({
         actions: {
             // Use getActions to call a function within a fuction
             fetchCredentials: async (email, password) => {
-                const resp = await fetch("https://3000-sollb77-starwarsfrontba-gluni3ojww7.ws-us89.gitpod.io/login", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password,
-                    })
-                })
-                if (resp.status === 200)
-
-                {
-                    const data = await resp.json()
+                const resp = await fetch(
+                    "https://3001-sollb77-starwarsfrontba-wrt0miebm26.ws-eu89.gitpod.io/api/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            password: password,
+                        }),
+                    }
+                );
+                if (resp.status === 200) {
+                    const data = await resp.json();
                     // localStorage.setItem("token", data ? .access_token)
                     setStore({
                         login: true,
-                    })
+                    });
                     console.log(getStore());
-                    return true
-
+                    return true;
                 }
-                return false
-
-            }
+                return false;
+            },
         },
 
         // All Characters
         obtenerCharacters: async () => {
             try {
-                const response = await fetch("https://swapi.dev/api/people")
-                const data = await response.json()
+                const response = await fetch("https://swapi.dev/api/people");
+                const data = await response.json();
                 setStore({
-                    personajes: data.results
-                })
+                    personajes: data.results,
+                });
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         },
 
         // 1 Character
         obtener1Character: async (id) => {
             try {
-                const response = await fetch("https://swapi.dev/api/people/" + id)
-                const data = await response.json()
+                const response = await fetch("https://swapi.dev/api/people/" + id);
+                const data = await response.json();
                 //console.log(data)
                 setStore({
-                    personaje: data
-                })
+                    personaje: data,
+                });
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         },
 
         // Todos los planets
         obtenerPlanets: async () => {
             try {
-                const response = await fetch("https://swapi.dev/api/planets/")
-                const data = await response.json()
+                const response = await fetch("https://swapi.dev/api/planets/");
+                const data = await response.json();
                 //console.log(data.results)
                 setStore({
-                    planets: data.results
-                })
+                    planets: data.results,
+                });
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         },
 
         //1 Planet
         obtener1Planet: async (id) => {
             try {
-                const response = await fetch("https://swapi.dev/api/planets/" + id)
-                const data = await response.json()
+                const response = await fetch("https://swapi.dev/api/planets/" + id);
+                const data = await response.json();
                 //console.log(data.results)
                 setStore({
-                    planet: data
-                })
+                    planet: data,
+                });
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         },
 
@@ -119,74 +117,75 @@ const getState = ({
             const store = getStore();
             if (store.favoritos.includes(item)) {
                 // Si esta incluido, que lo borre
-                const actions = getActions()
-                actions.removeFavorito(item)
+                const actions = getActions();
+                actions.removeFavorito(item);
             } else {
                 setStore({
-                    favoritos: [...store.favoritos, item]
-                })
+                    favoritos: [...store.favoritos, item],
+                });
                 //console.log(store.favoritos)
             }
-
         },
 
         // Borra favorito
         removeFavorito: (item) => {
             const store = getStore();
             //console.log(item)
-            let sinEliminar = []
+            let sinEliminar = [];
             //setStore(store.favoritos.filter((elem) => elem !== item))
             //console.log(store.favoritos)
-            sinEliminar = store.favoritos.filter((elem) => elem !== item)
+            sinEliminar = store.favoritos.filter((elem) => elem !== item);
             //console.log(sinEliminar)
             setStore({
-                favoritos: sinEliminar
-            })
+                favoritos: sinEliminar,
+            });
             //console.log(store.favoritos)
         },
 
         //Registrarse
         registro: async (name, lastname, username, email, password) => {
             try {
-                const response = await fetch('https://3000-sollb77-starwarsfrontba-gluni3ojww7.ws-us89.gitpod.io/principal', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        name: name,
-                        lastname: lastname,
-                        username: username,
-                        email: email,
-                        password: password
-                    }),
-                    headers: {
-                        "Content-type": "application/json"
+                const response = await fetch(
+                    "https://3001-sollb77-starwarsfrontba-wrt0miebm26.ws-eu89.gitpod.io", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            name: name,
+                            lastname: lastname,
+                            username: username,
+                            email: email,
+                            password: password,
+                        }),
+                        headers: {
+                            "Content-type": "application/json",
+                        },
                     }
-                })
+                );
                 if (response.status === 200) {
-                    const data = await response.json()
-                    localStorage.setItem('token', data.access_token)
+                    const data = await response.json();
+                    localStorage.setItem("token", data.access_token);
                     //console.log(data)
                     setStore({
-                        auth: true
-                    })
+                        auth: true,
+                    });
                     return true;
                 }
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         },
 
         getMessage: async () => {
             try {
                 // fetching data from the backend
-                const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-                const data = await resp.json()
+                const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
+                const data = await resp.json();
                 setStore({
-                    message: data.message
-                })
+                    message: data.message,
+                });
                 // don't forget to return something, that is how the async resolves
                 return data;
             } catch (error) {
-                console.log("Error loading message from backend", error)
+                console.log("Error loading message from backend", error);
             }
         },
         changeColor: (index, color) => {
@@ -202,11 +201,10 @@ const getState = ({
 
             //reset the global store
             setStore({
-                demo: demo
+                demo: demo,
             });
-        }
-    }
+        },
+    };
 };
-
 
 export default getState;
