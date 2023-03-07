@@ -55,7 +55,7 @@ const getState = ({
                 }
                 return false;
             },
-        },
+        
 
         // All Characters
         obtenerCharacters: async () => {
@@ -113,7 +113,7 @@ const getState = ({
         },
 
         // Favoritos
-        favorites: (item) => {
+        addFavorites: (item) => {
             const store = getStore();
             if (store.favoritos.includes(item)) {
                 // Si esta incluido, que lo borre
@@ -142,6 +142,7 @@ const getState = ({
             //console.log(store.favoritos)
         },
 
+     
         //Registrarse
         registro: async (name, lastname, username, email, password) => {
             try {
@@ -204,7 +205,9 @@ const getState = ({
                 demo: demo,
             });
         },
-    };
+    }
+
+  }
 };
 
 export default getState;
