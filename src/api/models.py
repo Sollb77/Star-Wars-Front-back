@@ -7,6 +7,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    favorites = db.relationship('Favorites', backref='user', lazy=True)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -15,6 +16,8 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            "is_active": self.is_active,
+
             # do not serialize the password, its a security breach
         }
 
@@ -23,6 +26,13 @@ class People(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     url = db.Column(db.String(250), unique=True, nullable=False)
+    genero = db.Column(db.String(30), nullable=True)
+    color_de_pelo = db.Column(db.String(30), nullable=True)
+    peso = db.Column(db.String(30), nullable=True)
+    birth_year = db.Column(db.String(100), nullable=True)
+    height = db.Column(db.String(100), nullable=True)
+    skin_color = db.Column(db.String(100), nullable=True)
+    eye_color = db.Column(db.String(100), nullable=True)
     favorites = db.relationship('Favorites', backref='people', lazy=True)
 
     def __repr__(self):
@@ -33,6 +43,15 @@ class People(db.Model):
             "id": self.id,
             "name": self.name,
             "url": self.url,
+            "genero": self.genero,
+            "color_de_pelo": self.color_de_pelo,
+            "peso": self.peso,
+            "birth_year": self.birth_year,
+            "height": self.height,
+            "skin_color": self.skin_color,
+            "eye_color": self.eye_color,
+
+
             # do not serialize the password, its a security breach
         }
 
@@ -40,6 +59,12 @@ class Planet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     url = db.Column(db.String(250), unique=True, nullable=False)
+    climate = db.Column(db.String(100), nullable=True)
+    diameter = db.Column(db.String(100), nullable=True)
+    population = db.Column(db.String(100), nullable=True)
+    gravity = db.Column(db.String(100), nullable=True)
+    terrain = db.Column(db.String(100), nullable=True)
+
     favorites = db.relationship('Favorites', backref='planet', lazy=True)
 
     def __repr__(self):
@@ -50,6 +75,12 @@ class Planet(db.Model):
             "id": self.id,
             "name": self.name,
             "url": self.url,
+            "climate": self.climate,
+            "diameter": self.diameter,
+            "population": self.population,
+            "gravity": self.gravity,
+            "terrain": self.terrain,
+
             # do not serialize the password, its a security breach
         }
 
