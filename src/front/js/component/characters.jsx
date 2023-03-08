@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 //import { useParams } from "react-router-dom";
 //import { getCharacters } from "../helpers/getCharacters";
 //include your index.scss file into the bundle
 import "../../styles/index.css";
-import { useContext } from "react";
 import { Context } from "../store/appContext";
 
 

@@ -21,6 +21,23 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
+#class Registro(db.Model):
+#    id = db.Column(db.Integer, primary_key=True)
+#    email = db.relationship('email', backref='user', lazy=True)
+#    password = db.relationship('password', backref='user', lazy=True)
+   
+
+#    def __repr__(self):
+#        return f'<Registro {self.email}>'
+
+#    def serialize(self):
+#        return {
+#            "id": self.id,
+#            "email": self.email,
+           
+
+            # do not serialize the password, its a security breach
+#        }
 
 class People(db.Model):
     id = db.Column(db.Integer, primary_key=True)

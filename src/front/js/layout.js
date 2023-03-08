@@ -11,7 +11,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { FavoritesProvider } from "./context/favoriteProvider.jsx";
 import { Principal } from "./pages/Principal";
-
+import { Registro } from "./pages/Registro.js";
 
 //create your first component
 const Layout = () => {
@@ -29,6 +29,7 @@ const Layout = () => {
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<Principal />} path="/principal" />
+            <Route element={<Registro />} path="/Registro" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

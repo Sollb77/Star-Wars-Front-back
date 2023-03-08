@@ -7,7 +7,7 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
-
+import json
 api = Blueprint('api', __name__)
 
 
@@ -41,7 +41,28 @@ def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
 
+@api.route('/registro', methods=['POST'])
+def addUser():
+    body = json.loads(request.data)
 
+    queryNewUser = User.query.filter_by(email=body["email"]).first()
+    
+    if queryNewUser is None:
+        new_user = User(
+        email=body["email"], 
+        password=body["password"], 
+        is_active=body["is_active"])
+        
+        db.session.add(new_user)
+        db.session.commit()
+        
+        response_body = {
+            "msg": "Nuevo usuario creado" 
+        }
+        return jsonify(new_user.serialize()), 200
+    
+    response_body = {"msg": "Usuario ya creado"}
+    return jsonify(response_body), 400
 
 
 @api.route('/admin/user', methods=['GET'])

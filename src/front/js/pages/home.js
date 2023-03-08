@@ -7,7 +7,8 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState("");
-  const Navigate = useNavigate();
+  //const Navigate = useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
@@ -21,6 +22,12 @@ export const Home = () => {
     }
   };
   //const {store,actions} = useContext(Context)
+  // const useNavigate = async () => {
+  //    Navigate("/principal") ;
+  //	if (store.login === true)
+  //	   {<Link to="/demo"/> }
+  // console.log(ver);
+  //  }
 
   return (
     <>
@@ -71,6 +78,15 @@ export const Home = () => {
           >
             Submit
           </button>
+          <Link to="/Registro">
+           <button
+            type="submit"
+            className="btn btn-primary"
+          //  onClick={<Link to="/Registro" />}
+           >
+            Registrarse
+           </button>
+          </Link>
         </form>
       </div>
     </>

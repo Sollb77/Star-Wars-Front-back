@@ -13,7 +13,7 @@ export const Planet = () => {
   const { favoritos } = store;
 
   const [planets, setPlanets] = useState([]);
-
+/*
   const planeta = async () => {
     try {
       const response = await fetch("https://swapi.dev/api/planets");
@@ -25,10 +25,9 @@ export const Planet = () => {
       console.log(error);
     }
   };
-  //personajes();
+  //personajes();*/
   useEffect(() => {
-    console.log(planeta);
-    planeta();
+   actions.obtenerPlanets();
   }, []);
 
   return (
@@ -36,13 +35,11 @@ export const Planet = () => {
       <h1 className="p-3 m-3 text-danger Liberation Sans">Planets</h1>
 
       <div className="card d-flex flex-row overflow-scroll p-3 m-3">
-        {planets.map((it, num) => (
+        {store.planets.map((it, num) => (
           <div key={num} className="p-2 m-2 border border-dark " id="tarjeta2">
             <img
               src={
-                "https://starwars-visualguide.com/assets/img/planets/" +
-                (num + 1) +
-                ".jpg"
+                it.url 
               }
               className="card-img-top "
               alt="..."
