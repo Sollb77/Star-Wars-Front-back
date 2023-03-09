@@ -59,7 +59,8 @@ export const Ficha = () => {
           <table className="table  ">
             <thead>
               <tr>
-                <th scope="col"> name </th> <th scope="col"> Birth yeard </th>{" "}
+                <th scope="col"> name </th> 
+                <th scope="col"> Birth yeard </th>{" "}
                 <th scope="col"> Gender </th> <th scope="col"> Height </th>{" "}
                 <th scope="col"> Skin Color </th>{" "}
                 <th scope="col"> Eye Color </th>{" "}

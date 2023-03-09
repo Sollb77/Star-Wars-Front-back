@@ -92,13 +92,14 @@ def get_usuario(user_id):
 
 
 @api.route('/favorites',methods=['GET'])
+@jwt_required()
 def get_favorites_user():
     current_user = get_jwt_identity()
-    favorites_user = favorites.query.filter_by(user_id=current_user).all()
-    print(favorites_user.serialize())
-  
+    favorites_user = Favorites.query.filter_by(user_id=current_user).all()
+    print(list(favorites_user))
+    lis_fav=list(map(lambda favorito:favorito.serialize(), favorites_user))
 
-    return jsonify(favorites_user.serialize()), 200
+    return jsonify(lis_fav), 200
 
 #Favoritos 
 

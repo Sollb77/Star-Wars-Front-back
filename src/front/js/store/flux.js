@@ -1,5 +1,5 @@
 //import {Characters} from "./component/characters.jsx";
-let url = "https://3001-sollb77-starwarsfrontba-gk558oqrrft.ws-us89b.gitpod.io"
+let url = "https://3001-sollb77-starwarsfrontba-15smcnnfja6.ws-us89b.gitpod.io"
 
 const getState = ({
     getStore,
