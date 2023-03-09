@@ -2,9 +2,9 @@ import React from "react";
 import { FavoritesContext } from "../context/favoriteContext.jsx";
 import {Link} from "react-router-dom";
 import { useContext } from "react";
-
+import { Context } from "../store/appContext";
 export const Navbar = () => {
-
+    const { store, actions } = useContext(Context);
 return (
     <nav className = "navbar bg-light d-flex justify-content-between" >
     <div className = "container-fluid d-flex justify-content-between" >
@@ -16,13 +16,18 @@ return (
     height ={80}/> 
     </Link> 
     </div>
+    
     <div className="dropdown ml-auto">
             <button className="btn btn-primary dropdown-toggle p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Favorites
-                <span className="badge bg-secondary rounded-pill">"0"</span>
+                
+                Favoritos {store.favoritos.length}
+                <span className="badge bg-secondary rounded-pill"></span>
             </button>
             <ul className="dropdown-menu dropdown-menu-end dropdown-menu-lg-end">
-            
+             {store.favoritos.map((favorito,i) => (
+                <li key={i}>{favorito}</li>
+             )
+             )}
             </ul>
         </div>
              

@@ -9,24 +9,24 @@ import { Context } from "../store/appContext";
 
 
 export const Characters = () => {
-//  let url = "https://3001-sollb77-starwarsfrontba-26ejchj0062.ws-us89b.gitpod.io"
+  let url = "https://3001-sollb77-starwarsfrontba-26ejchj0062.ws-us89b.gitpod.io"
   const { store, actions } = useContext(Context);
   const { addFavorites } = actions;
 //  const [characters, setCharacters] = useState([]);
 //  console.log(addFavorites)
 //  console.log(actions)
   const { favoritos } = store;
-/*  const personajes = async () => {
+  const personajes = async () => {
     try {
       const response = await fetch(url+"/api/people");
       const data = await response.json();
-      console.log(data.results);
+      //console.log(data.results);
 
       setCharacters(data.results);
     } catch (error) {
       console.log(error);
     }
-  };*/
+  };
   //personajes();
   useEffect(() => {
     actions.obtenerCharacters();
@@ -57,13 +57,13 @@ export const Characters = () => {
                 <strong>Peso:</strong> {item.peso} <br />
               </p>
               <div className="d-flex justify-content-between">
-                <Link to={"/ficha/" + (i + 1)}>
+                <Link to={"/ficha/"}>
                   <button className="btn btn-outline-primary p-2 mb-2 rounded">
                     {" "}
                     Mas detalles
                   </button>
                 </Link>
-                <button className="p-2 mb-3 text-warning border border-warning push-right rounded">
+                 <button className="p-2 mb-3 text-warning border border-warning push-right rounded">
                   <i
                     className={
                       favoritos.includes(item.name)
@@ -74,7 +74,7 @@ export const Characters = () => {
                       addFavorites(item.name);
                     }}
                   ></i>
-                </button>
+                </button> 
               </div>
                <a href="" className="btn btn-primary">Mas detalles</a> 
              </div>

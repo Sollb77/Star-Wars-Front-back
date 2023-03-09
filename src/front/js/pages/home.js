@@ -8,7 +8,7 @@ export const Home = () => {
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState("");
   //const Navigate = useNavigate();
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
@@ -46,7 +46,7 @@ export const Home = () => {
               aria-describedby="emailHelp"
             />
             <div id="emailHelp" className="htmlForm-text w-25">
-              We'll never share your email with anyone else.
+              
             </div>
           </div>
           <div className="mb-3">

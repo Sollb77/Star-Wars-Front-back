@@ -10,7 +10,7 @@ import {Planet} from "../component/Planet.jsx";
 export const Principal = () => {
   return (
     <>
-      <div>Hola</div>
+     
       {/* <Navbar/>  */}
       <Characters/>
       <Planet />

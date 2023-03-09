@@ -91,9 +91,10 @@ def get_usuario(user_id):
 #[GET]/user/favorites
 
 
-@api.route('/user/<int:user_id>/favorites',methods=['GET'])
-def get_favorites_user(user_id):
-    favorites_user = favorites.query.filter_by(user_id=user_id).all()
+@api.route('/favorites',methods=['GET'])
+def get_favorites_user():
+    current_user = get_jwt_identity()
+    favorites_user = favorites.query.filter_by(user_id=current_user).all()
     print(favorites_user.serialize())
   
 

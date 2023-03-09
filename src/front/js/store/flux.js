@@ -60,6 +60,7 @@ const getState = ({
 
             // All Characters
             obtenerCharacters: async () => {
+                console.log(getStore());
                 try {
                     const response = await fetch(url + "/api/people");
                     const data = await response.json();
@@ -127,6 +128,8 @@ const getState = ({
                     });
                     //console.log(store.favoritos)
                 }
+                console.log(getStore());
+
             },
 
             // Borra favorito

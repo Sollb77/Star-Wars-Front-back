@@ -3,14 +3,17 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { Context } from "../store/appContext";
 
 export const Ficha = () => {
   const params = useParams();
   const [persona, setPersona] = useState({});
+  const { store, actions } = useContext(Context);
+  let url = "https://3001-sollb77-starwarsfrontba-26ejchj0062.ws-us89b.gitpod.io"
   const personaje = async () => {
     try {
       const response = await fetch(
-        "https://swapi.dev/api/people/" + params.theid
+        url + params.theid
       );
       //console.log(response);
       const data = await response.json();
@@ -22,10 +25,9 @@ export const Ficha = () => {
     }
   };
   //personajes();
-  useEffect(() => {
-    personaje();
-  }, []);
-
+   useEffect(() => {
+    actions.obtenerCharacters();
+  }, [])
   return (
     <>
       <div className="container flex-column">
