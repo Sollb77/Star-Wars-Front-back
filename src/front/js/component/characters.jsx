@@ -57,7 +57,7 @@ export const Characters = () => {
                 <strong>Peso:</strong> {item.peso} <br />
               </p>
               <div className="d-flex justify-content-between">
-                <Link to={"/ficha/"}>
+                <Link to={"/ficha/"+item.id}>
                   <button className="btn btn-outline-primary p-2 mb-2 rounded">
                     {" "}
                     Mas detalles
