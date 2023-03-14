@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
+import "../../styles/registro.css";
 
 //export const Login = () => { 
 export const Registrarse = () => {
@@ -31,19 +32,19 @@ export const Registrarse = () => {
     }
 
     return (
-        <div>
-            <h1>Unete y juntos dominaremos la Galaxia!!</h1>
+        <div className="bg-light Todito">
+            <h1>Holaaaaaa</h1> 
             <br />
             <form onSubmit={registro}>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Nombre</label>
+                    <label htmlFor="exampleInputEmail1" className="form-label text-warning">Nombre</label>
                     <input type="text" className="form-control" 
                     id="exampleInputEmail1" aria-describedby="emailHelp"
                     onChange={(e) => setNombre(e.target.value)}
                     value={nombre}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Apellido</label>
+                    <label htmlFor="exampleInputEmail1" className="form-label ">Apellido</label>
                     <input type="text" className="form-control" id="exampleInputEmail1" 
                     aria-describedby="emailHelp"
                     onChange={(e) => setApellido(e.target.value)}

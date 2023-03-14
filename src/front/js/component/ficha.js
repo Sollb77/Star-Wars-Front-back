@@ -9,17 +9,17 @@ export const Ficha = () => {
   const params = useParams();
   const [persona, setPersona] = useState({});
   const { store, actions } = useContext(Context);
-  let url = "https://3001-sollb77-starwarsfrontba-26ejchj0062.ws-us89b.gitpod.io"
+  let url = "https://3001-sollb77-starwarsfrontba-7cz3rb4aqop.ws-us90.gitpod.io"
   const personaje = async () => {
     try {
       const response = await fetch(
-        url + params.theid
+        url + "/api/people"
       );
-      //console.log(response);
+      console.log(response);
       const data = await response.json();
-      console.log(data);
+      console.log(data.results);
 
-      setPersona(data);
+      setPersona(data.results);
     } catch (error) {
       console.log(error);
     }
@@ -31,6 +31,7 @@ export const Ficha = () => {
   return (
     <>
       <div className="container flex-column">
+      {store.personajes.map((item, i) => (
         <div className="d-flex justify-content-around m-3 p-3 ">
           <img
             src={
@@ -45,7 +46,7 @@ export const Ficha = () => {
           />
           <div />
           <div className="">
-            <h1> {persona.name} </h1>{" "}
+            <h1> {item.name} </h1>{" "}
             <p>
               {" "}
               Lorem ipsum dolor sit amet consectetur adipisicing
@@ -68,15 +69,19 @@ export const Ficha = () => {
             </thead>{" "}
             <tbody class="table-group-divider">
               <tr>
-                <th scope="row"> {persona.name} </th>{" "}
-                <td> {persona.birth_year} </td> <td> {persona.gender} </td>{" "}
-                <td> {persona.height} </td> <td> {persona.skin_color} </td>{" "}
-                <td> {persona.eye_color} </td>{" "}
+                <th scope="row"> {item.name} </th>{" "}
+                <td> {item.birth_year} </td> <td> {item.gender} </td>{" "}
+                <td> {item.height} </td> <td> {item.skin_color} </td>{" "}
+                <td> {item.eye_color} </td>{" "}
               </tr>{" "}
             </tbody>{" "}
           </table>{" "}
         </div>{" "}
-      </div>{" "}
+      ))}
+        
+        
+      </div>
     </>
   );
+};
 };

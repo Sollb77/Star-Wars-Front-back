@@ -76,7 +76,7 @@ export const Characters = () => {
                   ></i>
                 </button> 
               </div>
-               <a href="" className="btn btn-primary">Mas detalles</a> 
+               
              </div>
           </div>
         ))}

@@ -30,16 +30,16 @@ export const Home = () => {
   //  }
 
   return (
-    <>
-      <div className="text-center mt-5">
+    <div className="d-flex justify-content-center ">
+      <div className="text-center mt-5 border border-warning w-25 border border-3 Todo">
         <form>
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="htmlForm-label">
+            <label htmlFor="exampleInputEmail1" className="htmlForm-label text-warning">
               Email address
             </label>
             <input
               type="email"
-              className="htmlForm-control"
+              className="htmlForm-control m-2 "
               id="exampleInputEmail1"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -49,31 +49,31 @@ export const Home = () => {
               
             </div>
           </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="htmlForm-label">
+          <div className="mb-3 m-2">
+            <label htmlFor="exampleInputPassword1" className="htmlForm-label text-warning">
               Password
             </label>
             <input
               type="password"
-              className="htmlForm-control"
+              className="htmlForm-control m-2 text-warning"
               id="exampleInputPassword1"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
           </div>
-          <div className="mb-3 htmlForm-check">
+          <div className="mb-3 htmlForm-check m-2">
             <input
               type="checkbox"
-              className="htmlForm-check-input"
+              className="htmlForm-check-input m-2 text-warning"
               id="exampleCheck1"
             />
-            <label className="htmlForm-check-label" htmlFor="exampleCheck1">
+            <label className="htmlForm-check-label m-2 text-warning" htmlFor="exampleCheck1">
               Check me out
             </label>
           </div>
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-warning m-2"
             onClick={handleSubmit}
           >
             Submit
@@ -81,7 +81,7 @@ export const Home = () => {
           <Link to="/Registro">
            <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-outline-warning m-2"
           //  onClick={<Link to="/Registro" />}
            >
             Registrarse
@@ -89,6 +89,6 @@ export const Home = () => {
           </Link>
         </form>
       </div>
-    </>
+    </div>
   );
 };

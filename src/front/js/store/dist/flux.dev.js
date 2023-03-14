@@ -14,7 +14,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 //import {Characters} from "./component/characters.jsx";
-var url = "https://3001-sollb77-starwarsfrontba-15smcnnfja6.ws-us89b.gitpod.io";
+var url = "https://3001-sollb77-starwarsfrontba-7cz3rb4aqop.ws-us90.gitpod.io";
 
 var getState = function getState(_ref) {
   var getStore = _ref.getStore,

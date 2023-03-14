@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
+import "../../styles/registro.css";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Registro = () => {
@@ -10,11 +10,11 @@ export const Registro = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-    <div className="text-center mt-5">
+    <div className="d-flex justify-content-center style="  >
+    <div className="text-center mt-5  border-warning w-25 border border-3">
       <form>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="htmlForm-label">
+          <label htmlFor="exampleInputEmail1" className="htmlForm-label m-2 text-light">
             Email address
           </label>
           <input
@@ -25,12 +25,10 @@ export const Registro = () => {
             value={email}
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" className="htmlForm-text w-25">
-            We'll never share your email with anyone else.
-          </div>
+          
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="htmlForm-label">
+          <label htmlFor="exampleInputPassword1" className="htmlForm-label m-2 text-light">
             Password
           </label>
           <input
@@ -47,7 +45,7 @@ export const Registro = () => {
             className="htmlForm-check-input"
             id="exampleCheck1"
           />
-          <label className="htmlForm-check-label" htmlFor="exampleCheck1">
+          <label className="htmlForm-check-label m-2 text-light" htmlFor="exampleCheck1">
             Check me out
           </label>
         </div>
@@ -55,7 +53,7 @@ export const Registro = () => {
         <Link to="/principal">
          <button
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-light m-2"
         //  onClick={<Link to="/Principal" />}
          >
           Registrarse
@@ -63,6 +61,6 @@ export const Registro = () => {
         </Link>
       </form>
     </div>
-  </>
+  </div>
   );
 };
