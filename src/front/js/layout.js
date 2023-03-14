@@ -12,6 +12,7 @@ import { FavoritesProvider } from "./context/favoriteProvider.jsx";
 import { Principal } from "./pages/Principal";
 import { Registro } from "./pages/Registro.js";
 import { Ficha } from "./pages/ficha.js";
+import { Fichap } from "./pages/fichap.js";
 
 //create your first component
 const Layout = () => {
@@ -31,6 +32,7 @@ const Layout = () => {
             <Route element={<Principal />} path="/principal" />
             <Route element={<Registro />} path="/Registro" />
             <Route element={<Ficha />} path="/ficha/:theid" />
+            <Route element={<Fichap />} path="/fichap/:theid" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           

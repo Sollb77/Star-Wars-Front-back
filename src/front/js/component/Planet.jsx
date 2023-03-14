@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
+import "../../styles/ficha.css";
 //import { useParams } from "react-router-dom";
 //import { getCharacters } from "../helpers/getCharacters";
 //include your index.scss file into the bundle
-import "../../styles/index.css";
-import { Context } from "../store/appContext";
+
+
 
 export const Planet = () => {
   const { store, actions } = useContext(Context);
   const { addFavorites } = actions;
   const { favoritos } = store;
-
+   const params = useParams();
   const [planets, setPlanets] = useState([]);
 /*
   const planeta = async () => {
@@ -59,7 +61,7 @@ export const Planet = () => {
                 <span className="emphasized">{it.population}</span> <br />
               </p>
               <div className="d-flex justify-content-between mt-auto ">
-                <Link to={"/planetficha/" + (num + 1)}>
+                <Link to={"/fichap/" + (num + 1)}>
                   <button className="btn btn-outline-primary p-2 mb-2 rounded">
                     {" "}
                     Mas detalles

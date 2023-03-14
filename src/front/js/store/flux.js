@@ -1,5 +1,5 @@
 //import {Characters} from "./component/characters.jsx";
-let url = "https://3001-sollb77-starwarsfrontba-7cz3rb4aqop.ws-us90.gitpod.io"
+let url = "https://3001-sollb77-starwarsfrontba-wdf55acbhlt.ws-us90.gitpod.io"
 
 const getState = ({
     getStore,
@@ -76,11 +76,10 @@ const getState = ({
             // 1 Character
             obtener1Character: async (id) => {
                 try {
-                    const response = await fetch(url + "/api/people" + id);
+                    const response = await fetch(url + "/api/people/" + id);
                     const data = await response.json();
-                    //console.log(data)
                     setStore({
-                        personaje: data.list_people,
+                        personaje: data
                     });
                 } catch (error) {
                     console.log(error);
@@ -104,11 +103,10 @@ const getState = ({
             //1 Planet
             obtener1Planet: async (id) => {
                 try {
-                    const response = await fetch(url + "/api/people" + id);
+                    const response = await fetch(url + "/api/planet/" + id);
                     const data = await response.json();
-                    //console.log(data.results)
                     setStore({
-                        planet: data.list_planet,
+                        planet: data
                     });
                 } catch (error) {
                     console.log(error);

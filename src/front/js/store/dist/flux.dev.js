@@ -14,7 +14,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 //import {Characters} from "./component/characters.jsx";
-var url = "https://3001-sollb77-starwarsfrontba-7cz3rb4aqop.ws-us90.gitpod.io";
+var url = "https://3001-sollb77-starwarsfrontba-wdf55acbhlt.ws-us90.gitpod.io";
 
 var getState = function getState(_ref) {
   var getStore = _ref.getStore,
@@ -138,7 +138,7 @@ var getState = function getState(_ref) {
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return regeneratorRuntime.awrap(fetch(url + "/api/people" + id));
+                return regeneratorRuntime.awrap(fetch(url + "/api/people/" + id));
 
               case 3:
                 response = _context3.sent;
@@ -147,9 +147,8 @@ var getState = function getState(_ref) {
 
               case 6:
                 data = _context3.sent;
-                //console.log(data)
                 setStore({
-                  personaje: data.list_people
+                  personaje: data
                 });
                 _context3.next = 13;
                 break;
@@ -212,7 +211,7 @@ var getState = function getState(_ref) {
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return regeneratorRuntime.awrap(fetch(url + "/api/people" + id));
+                return regeneratorRuntime.awrap(fetch(url + "/api/planet/" + id));
 
               case 3:
                 response = _context5.sent;
@@ -221,9 +220,8 @@ var getState = function getState(_ref) {
 
               case 6:
                 data = _context5.sent;
-                //console.log(data.results)
                 setStore({
-                  planet: data.list_planet
+                  planet: data
                 });
                 _context5.next = 13;
                 break;
